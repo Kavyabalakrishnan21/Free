@@ -1,0 +1,77 @@
+import java.util.Scanner;
+
+// Class VEHICLE
+class VEHICLE {
+    String manufacture;
+    String color;
+    int year;
+    String model;
+
+    // Constructor to initialize VEHICLE data members
+    VEHICLE(String manufacture, String color, int year, String model) {
+        this.manufacture = manufacture;
+        this.color = color;
+        this.year = year;
+        this.model = model;
+    }
+}
+
+// Class CAR that inherits from VEHICLE
+class CAR extends VEHICLE {
+    String bodystyle;
+
+    // Constructor to initialize CAR data members
+    CAR(String manufacture, String color, int year, String model, String bodystyle) {
+        super(manufacture, color, year, model);
+        this.bodystyle = bodystyle;
+    }
+
+    // Method to display the CAR details
+    void displayDetails() {
+        System.out.println("Manufacture: " + manufacture);
+        System.out.println("Color: " + color);
+        System.out.println("Year: " + year);
+        System.out.println("Model: " + model);
+        System.out.println("Bodystyle: " + bodystyle);
+        System.out.println("-------------------------");
+    }
+}
+
+// Main class to test the CAR class
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter the number of cars: ");
+        int n = sc.nextInt();
+        sc.nextLine(); // Consume newline
+        
+        CAR[] cars = new CAR[n];
+        
+        // Input details for each car
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter details for car " + (i + 1) + ":");
+            System.out.print("Manufacture: ");
+            String manufacture = sc.nextLine();
+            System.out.print("Color: ");
+            String color = sc.nextLine();
+            System.out.print("Year: ");
+            int year = sc.nextInt();
+            sc.nextLine(); // Consume newline
+            System.out.print("Model: ");
+            String model = sc.nextLine();
+            System.out.print("Bodystyle: ");
+            String bodystyle = sc.nextLine();
+            
+            cars[i] = new CAR(manufacture, color, year, model, bodystyle);
+        }
+        
+        // Display details of each car
+        System.out.println("\nDetails of cars:");
+        for (CAR car : cars) {
+            car.displayDetails();
+        }
+        
+        sc.close();
+    }
+}
