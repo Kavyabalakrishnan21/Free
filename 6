@@ -1,0 +1,78 @@
+import java.util.Scanner;
+
+// Class to convert Celsius to Fahrenheit
+class Celsius {
+    private double celsius;
+
+    // Setter for Celsius
+    public void setCelsius(double celsius) {
+        this.celsius = celsius;
+    }
+
+    // Method to convert Celsius to Fahrenheit
+    public double toFahrenheit() {
+        return (celsius * 9/5) + 32;
+    }
+}
+
+// Class to convert Fahrenheit to Celsius
+class Fahrenheit {
+    private double fahrenheit;
+
+    // Setter for Fahrenheit
+    public void setFahrenheit(double fahrenheit) {
+        this.fahrenheit = fahrenheit;
+    }
+
+    // Method to convert Fahrenheit to Celsius
+    public double toCelsius() {
+        return (fahrenheit - 32) * 5/9;
+    }
+}
+
+public class TemperatureConverter {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        boolean continueConversion = true;
+
+        while (continueConversion) {
+            System.out.println("Temperature Conversion Menu:");
+            System.out.println("1. Convert Celsius to Fahrenheit");
+            System.out.println("2. Convert Fahrenheit to Celsius");
+            System.out.println("3. Exit");
+            System.out.print("Enter your choice: ");
+            int choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    // Convert Celsius to Fahrenheit
+                    System.out.print("Enter temperature in Celsius: ");
+                    double celsiusTemp = scanner.nextDouble();
+                    Celsius celsius = new Celsius();
+                    celsius.setCelsius(celsiusTemp);
+                    double fahrenheitResult = celsius.toFahrenheit();
+                    System.out.println("Temperature in Fahrenheit: " + fahrenheitResult);
+                    break;
+                case 2:
+                    // Convert Fahrenheit to Celsius
+                    System.out.print("Enter temperature in Fahrenheit: ");
+                    double fahrenheitTemp = scanner.nextDouble();
+                    Fahrenheit fahrenheit = new Fahrenheit();
+                    fahrenheit.setFahrenheit(fahrenheitTemp);
+                    double celsiusResult = fahrenheit.toCelsius();
+                    System.out.println("Temperature in Celsius: " + celsiusResult);
+                    break;
+                case 3:
+                    // Exit the program
+                    continueConversion = false;
+                    System.out.println("Exiting the program.");
+                    break;
+                default:
+                    System.out.println("Invalid choice! Please try again.");
+            }
+            System.out.println(); // Print a blank line for readability
+        }
+
+        scanner.close();
+    }
+}
