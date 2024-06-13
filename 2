@@ -1,0 +1,112 @@
+import java.util.Scanner;
+
+// Base class Student
+class Student {
+    int rollNo;
+    String name;
+    int[] marks = new int[7];
+    int totalMarks;
+    double percentage;
+
+    // Constructor to initialize Student data members
+    public Student(int rollNo, String name, int[] marks) {
+        this.rollNo = rollNo;
+        this.name = name;
+        this.marks = marks;
+        calculateTotalAndPercentage();
+    }
+
+    // Method to calculate total marks and percentage
+    private void calculateTotalAndPercentage() {
+        totalMarks = 0;
+        for (int mark : marks) {
+            totalMarks += mark;
+        }
+        percentage = totalMarks / 7.0;
+    }
+
+    // Method to display Student data
+    public void displayStudentDetails() {
+        System.out.println("Roll No: " + rollNo);
+        System.out.println("Name: " + name);
+        System.out.print("Marks: ");
+        for (int mark : marks) {
+            System.out.print(mark + " ");
+        }
+        System.out.println();
+        System.out.println("Total Marks: " + totalMarks);
+        System.out.println("Percentage: " + percentage);
+    }
+}
+
+// Derived class Mooc extending Student
+class Mooc extends Student {
+    String course;
+    double coursePercentage;
+
+    // Constructor to initialize Mooc data members
+    public Mooc(int rollNo, String name, int[] marks, String course, double coursePercentage) {
+        super(rollNo, name, marks);
+        this.course = course;
+        this.coursePercentage = coursePercentage;
+    }
+
+    // Method to display Mooc data
+    public void displayMoocDetails() {
+        displayStudentDetails();
+        System.out.println("Course: " + course);
+        System.out.println("Course Percentage: " + coursePercentage);
+    }
+}
+
+// Derived class Course extending Mooc
+class Course extends Mooc {
+    String courseName;
+
+    // Constructor to initialize Course data members
+    public Course(int rollNo, String name, int[] marks, String course, double coursePercentage, String courseName) {
+        super(rollNo, name, marks, course, coursePercentage);
+        this.courseName = courseName;
+    }
+
+    // Method to display Course data
+    public void displayCourseDetails() {
+        displayMoocDetails();
+        System.out.println("Course Name: " + courseName);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input Student details
+        System.out.print("Enter Roll No: ");
+        int rollNo = scanner.nextInt();
+        scanner.nextLine(); // Consume newline
+        System.out.print("Enter Name: ");
+        String name = scanner.nextLine();
+        int[] marks = new int[7];
+        System.out.println("Enter marks for 7 subjects:");
+        for (int i = 0; i < 7; i++) {
+            marks[i] = scanner.nextInt();
+        }
+        scanner.nextLine(); // Consume newline
+        System.out.print("Enter Course: ");
+        String course = scanner.nextLine();
+        System.out.print("Enter Course Percentage: ");
+        double coursePercentage = scanner.nextDouble();
+        scanner.nextLine(); // Consume newline
+        System.out.print("Enter Course Name: ");
+        String courseName = scanner.nextLine();
+
+        // Create a Course object
+        Course courseObj = new Course(rollNo, name, marks, course, coursePercentage, courseName);
+
+        // Display Course details
+        System.out.println("\nStudent Details:");
+        courseObj.displayCourseDetails();
+
+        scanner.close();
+    }
+}
