@@ -14,22 +14,20 @@ class Rectangle {
         this.length = length;
     }
 
-    // Getter for breadth
+
     public double getBreadth() {
         return breadth;
     }
 
-    // Setter for breadth
+  
     public void setBreadth(double breadth) {
         this.breadth = breadth;
     }
 
-    // Method to calculate the area
     public double getArea() {
         return length * breadth;
     }
 
-    // Method to calculate the perimeter
     public double getPerimeter() {
         return 2 * (length + breadth);
     }
@@ -39,29 +37,29 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        // Get the side of the square from the user
+        
         System.out.print("Enter the side of the square: ");
         double sideOfSquare = scanner.nextDouble();
 
-        // Calculate the area of the square
+   
         double areaOfSquare = sideOfSquare * sideOfSquare;
 
-        // Get the breadth of the rectangle from the user
+       
         System.out.print("Enter the breadth of the rectangle: ");
         double breadthOfRectangle = scanner.nextDouble();
 
-        // Calculate the length of the rectangle
+      
         double lengthOfRectangle = areaOfSquare / breadthOfRectangle;
 
-        // Create a Rectangle object and set its properties
+     
         Rectangle rectangle = new Rectangle();
         rectangle.setLength(lengthOfRectangle);
         rectangle.setBreadth(breadthOfRectangle);
 
-        // Output the perimeter and area of the rectangle
+  
         System.out.println("The area of the rectangle is: " + rectangle.getArea());
         System.out.println("The perimeter of the rectangle is: " + rectangle.getPerimeter());
 
-        scanner.close();
+        
     }
 }
