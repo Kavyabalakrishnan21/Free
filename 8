@@ -1,0 +1,92 @@
+import java.util.Scanner;
+
+// Class to represent Student details
+class Student {
+    String studentID;
+    String name;
+    String branch;
+    int year;
+    String location;
+    String college;
+    int[] marks;
+
+    // Constructor to initialize Student data members
+    Student(String studentID, String name, String branch, int year, String location, String college, int[] marks) {
+        this.studentID = studentID;
+        this.name = name;
+        this.branch = branch;
+        this.year = year;
+        this.location = location;
+        this.college = college;
+        this.marks = marks;
+    }
+
+    // Method to calculate average of marks
+    double calculateAverage() {
+        int sum = 0;
+        for (int mark : marks) {
+            sum += mark;
+        }
+        return sum / (double) marks.length;
+    }
+
+    // Method to calculate percentage of marks
+    double calculatePercentage() {
+        int totalMarks = 600; // Assuming each subject is out of 100 and there are 6 subjects
+        int obtainedMarks = 0;
+        for (int mark : marks) {
+            obtainedMarks += mark;
+        }
+        return (obtainedMarks / (double) totalMarks) * 100;
+    }
+
+    // Method to display student details and calculated values
+    void displayDetails() {
+        System.out.println("Student ID: " + studentID);
+        System.out.println("Name: " + name);
+        System.out.println("Branch: " + branch);
+        System.out.println("Year: " + year);
+        System.out.println("Location: " + location);
+        System.out.println("College: " + college);
+        System.out.println("Average Marks: " + calculateAverage());
+        System.out.println("Percentage: " + calculatePercentage() + "%");
+    }
+}
+
+// Main class to test the Student class
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        // Input details for the student
+        System.out.print("Enter Student ID: ");
+        String studentID = sc.nextLine();
+        System.out.print("Enter Name: ");
+        String name = sc.nextLine();
+        System.out.print("Enter Branch: ");
+        String branch = sc.nextLine();
+        System.out.print("Enter Year: ");
+        int year = sc.nextInt();
+        sc.nextLine(); // Consume newline
+        System.out.print("Enter Location: ");
+        String location = sc.nextLine();
+        System.out.print("Enter College: ");
+        String college = sc.nextLine();
+
+        int[] marks = new int[6];
+        System.out.println("Enter marks for 6 subjects: ");
+        for (int i = 0; i < 6; i++) {
+            System.out.print("Subject " + (i + 1) + ": ");
+            marks[i] = sc.nextInt();
+        }
+
+        // Create Student object
+        Student student = new Student(studentID, name, branch, year, location, college, marks);
+
+        // Display student details
+        System.out.println("\nStudent Details:");
+        student.displayDetails();
+
+        sc.close();
+    }
+}
