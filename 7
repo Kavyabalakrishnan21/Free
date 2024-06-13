@@ -1,13 +1,13 @@
 import java.util.Scanner;
 
-// Class VEHICLE
+
 class VEHICLE {
     String manufacture;
     String color;
     int year;
     String model;
 
-    // Constructor to initialize VEHICLE data members
+    
     VEHICLE(String manufacture, String color, int year, String model) {
         this.manufacture = manufacture;
         this.color = color;
@@ -16,17 +16,17 @@ class VEHICLE {
     }
 }
 
-// Class CAR that inherits from VEHICLE
+
 class CAR extends VEHICLE {
     String bodystyle;
 
-    // Constructor to initialize CAR data members
+   
     CAR(String manufacture, String color, int year, String model, String bodystyle) {
         super(manufacture, color, year, model);
         this.bodystyle = bodystyle;
     }
 
-    // Method to display the CAR details
+ 
     void displayDetails() {
         System.out.println("Manufacture: " + manufacture);
         System.out.println("Color: " + color);
@@ -37,8 +37,8 @@ class CAR extends VEHICLE {
     }
 }
 
-// Main class to test the CAR class
-public class Main {
+
+ class vechi {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         
@@ -48,7 +48,7 @@ public class Main {
         
         CAR[] cars = new CAR[n];
         
-        // Input details for each car
+      
         for (int i = 0; i < n; i++) {
             System.out.println("Enter details for car " + (i + 1) + ":");
             System.out.print("Manufacture: ");
@@ -66,12 +66,12 @@ public class Main {
             cars[i] = new CAR(manufacture, color, year, model, bodystyle);
         }
         
-        // Display details of each car
+       
         System.out.println("\nDetails of cars:");
         for (CAR car : cars) {
             car.displayDetails();
         }
         
-        sc.close();
+    
     }
 }
